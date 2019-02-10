@@ -85,6 +85,10 @@ export default function onContextCreate ({ gl, vertShaders, fragShaders }) {
   gl.drawArrays(primitiveType, offset_2, count);
 
 
+  gl.flush();
+  gl.endFrameEXP();
+  _initialized = true;
+
 
 
 
@@ -136,9 +140,6 @@ export default function onContextCreate ({ gl, vertShaders, fragShaders }) {
 
 
 
-  gl.flush();
-  gl.endFrameEXP();
-  _initialized = true;
 
 
 

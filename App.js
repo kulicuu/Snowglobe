@@ -8,12 +8,15 @@ import vertSrc_002 from './src/shaders/vertexShader_002.js'
 
 
 import fragSrc from './src/shaders/fragmentShader0.js';
+import snowflakeFragSrc from './src/shaders/fragmentShader_002.js';
+
+
 import onContextCreate from './src/onContextCreate.js';
 
 let _initialized = false;
 
 const vertShaders = { vertSrc, vertSrc_002 };
-const fragShaders = { fragSrc };
+const fragShaders = { fragSrc, snowflakeFragSrc };
 
 
 export default class App extends React.Component {
