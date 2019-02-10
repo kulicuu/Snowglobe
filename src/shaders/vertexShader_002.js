@@ -2,11 +2,14 @@
 
 const vertSrc_002 = `
 
-attribute vec4 a_position;
+attribute vec4 b_position;
 
 void main() {
-  vec4 x33 = a_position * 2.0;
-  gl_Position = x33;
+  vec4 c = vec4(0.9, -1.9, 1.0, 1.0);
+
+  gl_Position = b_position + c;
+
+
 
 }
 `;
