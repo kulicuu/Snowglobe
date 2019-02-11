@@ -34,6 +34,7 @@ import expolib_v1.okhttp3.OkHttpClient;
 
 // Needed for `react-native link`
 // import com.facebook.react.ReactApplication;
+import com.jadsonlourenco.RNShakeEvent.RNShakeEventPackage;
 import com.clipsub.RNShake.RNShakeEventPackage;
 import com.jadsonlourenco.RNShakeEvent.RNShakeEventPackage;
 
@@ -52,6 +53,7 @@ public class MainApplication extends ExpoApplication implements AppLoaderPackage
 
         // Needed for `react-native link`
         // new MainReactPackage(),
+            new RNShakeEventPackage(),
             new RNShakeEventPackage(),
             new RNShakeEventPackage()
     );

@@ -28,7 +28,7 @@ var snowpack = [...Array(snowpackRes)];
 export default function drawSnowflakes ({ gl, vertShader, fragShader }) {
 
   if (counter++ % 3 === 0) {
-    for (let idx = 0; idx < 50; idx++) {
+    for (let idx = 0; idx < 60; idx++) {
       let scaleFactor = (idx % 30) * .00033;
 
       let x = (Math.random() * 2.0) - 1.0;

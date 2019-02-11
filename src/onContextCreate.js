@@ -76,7 +76,7 @@ export default function onContextCreate ({ gl, vertShaders, fragShaders }) {
 
     gl.flush();
     gl.endFrameEXP();
-  }, 40)
+  }, 30)
 
 
 

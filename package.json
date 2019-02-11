@@ -7,12 +7,12 @@
     "eject": "expo eject"
   },
   "dependencies": {
+    "@chenng/react-native-shake-event": "^1.0.4",
     "expo": "^32.0.0",
     "expo-three": "^3.0.0-alpha.8",
     "expokit": "32.0.6",
     "react": "16.5.0",
-    "react-native": "https://github.com/expo/react-native/archive/sdk-32.0.0.tar.gz",
-    "react-native-shake": "latest"
+    "react-native": "https://github.com/expo/react-native/archive/sdk-32.0.0.tar.gz"
   },
   "devDependencies": {
     "babel-preset-expo": "^5.0.0"
