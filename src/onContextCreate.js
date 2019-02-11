@@ -37,7 +37,7 @@ export default function onContextCreate ({ gl, vertShaders, fragShaders }) {
 
 
 
-    gl.clearColor(0,0,0,0);
+    gl.clearColor(0.0,0,0.7,.79);
     gl.clear(gl.COLOR_BUFFER_BIT);
 
 
@@ -86,17 +86,25 @@ function drawChristmasTree ({ gl, vertShader, fragShader }) {
 
 
   const positions33 = [
-    0.0, 0.9,
-    0.3, 0.7,
-    -0.3, 0.7,
+    0.0, .19,
+    0.27, -.43,
+    -0.27, -.43,
 
-    0.0, -.35,
-    .45, -.62,
-    -.45, -.62,
+    0.0, -.13,
+    .3, -.62,
+    -.3, -.62,
 
     0, -.42,
-    .6, -.849,
-    -.6, -.849,
+    .4, -.849,
+    -.4, -.849,
+
+    -.02, -.8,
+    -.02, -.99,
+    0, -.8,
+
+    .02, -.8,
+    .02, -.99,
+    0, -.8
 
   ];
   gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(positions33), gl.STATIC_DRAW);
@@ -110,7 +118,7 @@ function drawChristmasTree ({ gl, vertShader, fragShader }) {
   gl.vertexAttribPointer(positionAttributeLocation_a, size, type, normalize, stride, offset);
   const primitiveType = gl.TRIANGLES;
 
-  const count = 9;
+  const count = 15;
   gl.drawArrays(primitiveType, offset, count);
 
 

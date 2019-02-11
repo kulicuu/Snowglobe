@@ -5,13 +5,13 @@
 var snowflakes = [];
 
 
-const snowpackRes = 300;
+const snowpackRes = 1000;
 var snowpack = [...Array(snowpackRes)];
 
 
-[...Array(8000)].map((val, idx) => {
+[...Array(18000)].map((val, idx) => {
 
-  let scaleFactor = (idx % 10) * .001;
+  let scaleFactor = (idx % 20) * .0006;
 
   let x = (Math.random() * 2.0) - 1.0;
   let y = (Math.random() * 2.0) - 1.0;
@@ -27,7 +27,7 @@ var snowpack = [...Array(snowpackRes)];
 
 
 
-var counter = 0;
+
 
 export default function drawSnowflakes ({ gl, vertShader, fragShader }) {
 
@@ -40,16 +40,17 @@ export default function drawSnowflakes ({ gl, vertShader, fragShader }) {
     let xVal = Math.floor((snowflakes[idx] + 1) * snowpackRes);
 
 
-    // if (counter ++ % 20 == 0) console.log(snowpack[xVal], 'xVal');
+
 
     let packed = false
 
     if (snowpack[xVal] === undefined ) {
 
-      if ( snowflakes[idx + 1] < -.93 ) {
+      if ( snowflakes[idx + 1] < -.98 ) {
         snowpack[xVal] = snowflakes[idx + 1]
+        packed = true;
       }
-    } else if (Math.abs(snowpack[xVal] - snowflakes[idx + 1]) < .009) {
+    } else if (Math.abs(snowpack[xVal] - snowflakes[idx + 1]) < .023) {
       snowpack[xVal] = snowflakes[idx + 1];
       packed = true;
     }
@@ -57,17 +58,17 @@ export default function drawSnowflakes ({ gl, vertShader, fragShader }) {
 
 
 
-    if ( (snowflakes[idx + 1] > -.95) && (packed === false) ) {
+    if (packed === false) {
 
-      const randXFactor = .002 * (Math.random() - .5);
-      const randYFactor = .002 * (Math.random() - .5);
+      const randXFactor = .011 * (Math.random() - .5);
+      const randYFactor = .011 * (Math.random() - .5);
 
       snowflakes[idx] += randXFactor;
       snowflakes[idx + 2] += randXFactor;
       snowflakes[idx + 4] += randXFactor;
-      snowflakes[idx + 1] -= (.003 + randYFactor);
-      snowflakes[idx + 3] -= (.003 + randYFactor);
-      snowflakes[idx + 5] -= (.003 + randYFactor);
+      snowflakes[idx + 1] -= (.014 + randYFactor);
+      snowflakes[idx + 3] -= (.014 + randYFactor);
+      snowflakes[idx + 5] -= (.014 + randYFactor);
     }
 
   }
