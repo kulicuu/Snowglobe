@@ -31,15 +31,21 @@ export default function onContextCreate ({ gl, vertShaders, fragShaders }) {
 
 
 
-  drawChristmasTree({
-    gl,
-    vertShader: vert,
-    fragShader: frag,
-  });
+
 
   setInterval(() => {
 
 
+
+    gl.clearColor(0,0,0,0);
+    gl.clear(gl.COLOR_BUFFER_BIT);
+
+
+    drawChristmasTree({
+      gl,
+      vertShader: vert,
+      fragShader: frag,
+    });
 
 
     drawSnowflakes({
@@ -52,7 +58,7 @@ export default function onContextCreate ({ gl, vertShaders, fragShaders }) {
 
     gl.flush();
     gl.endFrameEXP();
-  }, 1000)
+  }, 20)
 
 
 
