@@ -5,13 +5,14 @@ const fragSrc = `
 
 
 
+varying vec4 c_position;
 
 void main() {
-  gl_FragColor = vec4(.83,0.78,0.98,.90);
 
 
+
+  gl_FragColor = vec4(1.0, 0.0, 0.0, 1.0);
 }
-
 
 `;
 

@@ -27,8 +27,8 @@ var snowpack = [...Array(snowpackRes)];
 
 export default function drawSnowflakes ({ gl, vertShader, fragShader }) {
 
-  if (counter++ % 4 === 0) {
-    for (let idx = 0; idx < 30; idx++) {
+  if (counter++ % 3 === 0) {
+    for (let idx = 0; idx < 50; idx++) {
       let scaleFactor = (idx % 30) * .00033;
 
       let x = (Math.random() * 2.0) - 1.0;
@@ -60,7 +60,7 @@ export default function drawSnowflakes ({ gl, vertShader, fragShader }) {
         snowpack[xVal] = snowflakes[idx + 1]
         packed = true;
       }
-    } else if (Math.abs(snowpack[xVal] - snowflakes[idx + 1]) < .023) {
+    } else if (Math.abs(snowpack[xVal] - snowflakes[idx + 1]) < .015) {
       snowpack[xVal] = snowflakes[idx + 1];
       packed = true;
     } else if (treeCollision1(snowflakes[idx], snowflakes[idx + 1]) || treeCollision2(snowflakes[idx], snowflakes[idx + 1]) || treeCollision3(snowflakes[idx], snowflakes[idx + 1])) packed = true;

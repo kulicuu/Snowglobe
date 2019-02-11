@@ -8,8 +8,8 @@ import drawSnowflakes from './drawSnowflakes.js'
 
 export default function onContextCreate ({ gl, vertShaders, fragShaders }) {
 
-  const { vertSrc, vertSrc_002 } = vertShaders;
-  const { fragSrc, snowflakeFragSrc } = fragShaders;
+  const { vertSrc, vertSrc_002, globeVertSrc } = vertShaders;
+  const { fragSrc, snowflakeFragSrc, globeFragSrc } = fragShaders;
 
   gl.viewport(0, 0, gl.drawingBufferWidth, gl.drawingBufferHeight);
 
@@ -21,6 +21,10 @@ export default function onContextCreate ({ gl, vertShaders, fragShaders }) {
   gl.shaderSource(vert_002, vertSrc_002);
   gl.compileShader(vert_002);
 
+  const globeVert = gl.createShader(gl.VERTEX_SHADER);
+  gl.shaderSource(globeVert, globeVertSrc);
+  gl.compileShader(globeVert);
+
   const frag = gl.createShader(gl.FRAGMENT_SHADER);
   gl.shaderSource(frag, fragSrc);
   gl.compileShader(frag);
@@ -29,18 +33,28 @@ export default function onContextCreate ({ gl, vertShaders, fragShaders }) {
   gl.shaderSource(snowflakeFrag, snowflakeFragSrc);
   gl.compileShader(snowflakeFrag);
 
+  const globeFrag = gl.createShader(gl.FRAGMENT_SHADER);
+  gl.shaderSource(globeFrag, globeFragSrc);
+  gl.compileShader(globeFrag);
 
 
 
 
   setInterval(() => {
 
+    gl.enable(gl.STENCIL_TEST);
+    // gl.stencilFunc(gl.LESS, 0.2, 1110011);
 
+    gl.stencilFunc(gl.ALWAYS, 1, 0xff);
+    gl.stencilOp(gl.REPLACE, gl.REPLACE, gl.REPLACE);
 
     gl.clearColor(0.0,0,0.7,.79);
     gl.clear(gl.COLOR_BUFFER_BIT);
 
-    drawSnowflakes({
+
+
+
+    drawSnowflakes.bind(this)({
       gl,
       vertShader: vert,
       fragShader: snowflakeFrag,
@@ -53,12 +67,11 @@ export default function onContextCreate ({ gl, vertShaders, fragShaders }) {
     });
 
 
-    drawSnowflakes({
+    drawSnowflakes.bind(this)({
       gl,
       vertShader: vert,
       fragShader: snowflakeFrag,
     });
-
 
 
     gl.flush();
@@ -69,12 +82,6 @@ export default function onContextCreate ({ gl, vertShaders, fragShaders }) {
 
 
 };
-
-
-
-
-
-
 
 
 
