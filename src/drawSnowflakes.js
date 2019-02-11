@@ -5,18 +5,21 @@
 var snowflakes = [];
 
 
-const snowpackRes = 500;
+const snowpackRes = 300;
 var snowpack = [...Array(snowpackRes)];
 
 
-[...Array(4000)].map(() => {
+[...Array(8000)].map((val, idx) => {
+
+  let scaleFactor = (idx % 10) * .001;
+
   let x = (Math.random() * 2.0) - 1.0;
   let y = (Math.random() * 2.0) - 1.0;
 
   snowflakes = snowflakes.concat([
     x, y,
-    x - .008, y + .008,
-    x + .008, y + .008,
+    x - scaleFactor, y + scaleFactor,
+    x + scaleFactor, y + scaleFactor,
   ]);
 
 });
@@ -55,9 +58,16 @@ export default function drawSnowflakes ({ gl, vertShader, fragShader }) {
 
 
     if ( (snowflakes[idx + 1] > -.95) && (packed === false) ) {
-      snowflakes[idx + 1] -= .003;
-      snowflakes[idx + 3] -= .003;
-      snowflakes[idx + 5] -= .003;
+
+      const randXFactor = .002 * (Math.random() - .5);
+      const randYFactor = .002 * (Math.random() - .5);
+
+      snowflakes[idx] += randXFactor;
+      snowflakes[idx + 2] += randXFactor;
+      snowflakes[idx + 4] += randXFactor;
+      snowflakes[idx + 1] -= (.003 + randYFactor);
+      snowflakes[idx + 3] -= (.003 + randYFactor);
+      snowflakes[idx + 5] -= (.003 + randYFactor);
     }
 
   }
@@ -92,29 +102,3 @@ export default function drawSnowflakes ({ gl, vertShader, fragShader }) {
   gl.drawArrays(primitiveType, offset, count);
 
 }
-
-
-
-// snowflakes = snowflakes.map((coord, idx) => {
-//
-//   let packed = false;
-//   if ((idx + 1) % 2 === 0) {
-//     let xVal = Math.floor((coord + 1) * 100);
-//     // console.log(xVal, 'xVal');
-//     if (  (snowpack.indexOf(xVal) > -1) && (  Math.abs(snowflakes[idx + 1] - snowpack[xVal]) < .2)  ) {
-//       snowpack[xVal] = snowflakes[idx + 1];
-//       packed = true;
-//     } else if (snowflakes[idx + 1] < -.90) {
-//       snowpack[xVal] = snowflakes[idx + 1];
-//       packed = true;
-//     }
-//   }
-//
-//
-//
-//
-//   if (((idx + 1) % 2 === 0) && (coord > -.95) && (!packed)) {
-//     return coord - .01
-//   }
-//   return coord;
-// })

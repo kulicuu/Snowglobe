@@ -90,13 +90,13 @@ function drawChristmasTree ({ gl, vertShader, fragShader }) {
     0.3, 0.7,
     -0.3, 0.7,
 
-    0.0, .8,
-    .45, .5,
-    -.45, .5,
+    0.0, -.35,
+    .45, -.62,
+    -.45, -.62,
 
-    0, .7,
-    .6, .2,
-    -.6, .2,
+    0, -.42,
+    .6, -.849,
+    -.6, -.849,
 
   ];
   gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(positions33), gl.STATIC_DRAW);
