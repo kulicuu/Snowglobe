@@ -17,3 +17,14 @@ On Saturday I reviewed boilerplate WebGL fundamentals, and got some rudimentary 
 On Sunday I got animation working and worked pretty late getting the core features working.  
 
 You can check the commit history for more detailed view of time spent.
+
+
+#### How to:
+
+If Expo is installed  https://facebook.github.io/react-native/docs/getting-started.html
+
+
+`expo start --tunnel` should get you going.
+
+
+You may also be able to run it via the expo.io website at https://expo.io/@kulicuu/Iter_003
